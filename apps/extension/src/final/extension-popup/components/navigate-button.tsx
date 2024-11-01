@@ -14,7 +14,7 @@ export const NavigateButton = ({
 
   return (
     <IconButton
-      className="hover:text-[#22C55E]"
+      className="hover:text-green-500"
       iconProps={{ name: iconName, size: 20 }}
       onClick={() => {
         extensionPopup.navigate(navigateURL);

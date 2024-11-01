@@ -8,7 +8,12 @@ import {
   WithEventsLogger,
   WithObservabilityScope,
 } from 'shared/observability';
-import { PortalProvider, QueryProvider, TailwindProvider } from 'shared/ui';
+import {
+  NotificationsProvider,
+  PortalProvider,
+  QueryProvider,
+  TailwindProvider,
+} from 'shared/ui';
 import { TwitterScrapingContextProvider } from 'host/twitter';
 import {
   ExtensionPopupProvider,
@@ -34,21 +39,23 @@ export const Providers = ({
               <TailwindProvider>
                 <QueryProvider>
                   <NiceModal.Provider>
-                    <WalletContextProvider
-                      disabledWalletsRdns={disabledWalletRdns}
-                    >
-                      <ExtensionPopupProvider>
-                        <ExtensionSettingsProvider>
-                          <TwitterScrapingContextProvider>
-                            <WarpcastScrapingContextProvider>
-                              <SupercastScrapingContextProvider>
-                                {children}
-                              </SupercastScrapingContextProvider>
-                            </WarpcastScrapingContextProvider>
-                          </TwitterScrapingContextProvider>
-                        </ExtensionSettingsProvider>
-                      </ExtensionPopupProvider>
-                    </WalletContextProvider>
+                    <NotificationsProvider>
+                      <WalletContextProvider
+                        disabledWalletsRdns={disabledWalletRdns}
+                      >
+                        <ExtensionPopupProvider>
+                          <ExtensionSettingsProvider>
+                            <TwitterScrapingContextProvider>
+                              <WarpcastScrapingContextProvider>
+                                <SupercastScrapingContextProvider>
+                                  {children}
+                                </SupercastScrapingContextProvider>
+                              </WarpcastScrapingContextProvider>
+                            </TwitterScrapingContextProvider>
+                          </ExtensionSettingsProvider>
+                        </ExtensionPopupProvider>
+                      </WalletContextProvider>
+                    </NotificationsProvider>
                   </NiceModal.Provider>
                 </QueryProvider>
               </TailwindProvider>
